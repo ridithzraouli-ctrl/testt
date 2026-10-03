@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Catch Me!</title>
+
+    <style>
+        body {
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        #button {
+            position: absolute;
+            padding: 15px 25px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        #message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 35px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="button">Click me!</button>
+
+    <div id="message"></div>
+
+    <script>
+        const button = document.getElementById("button");
+        const message = document.getElementById("message");
+
+        let clicks = 0;
+
+        button.addEventListener("click", function () {
+            clicks++;
+
+            if (clicks >= 10) {
+                button.style.display = "none";
+                message.textContent = "Good job! ♡";
+                return;
+            }
+
+            const maxX = window.innerWidth - button.offsetWidth;
+            const maxY = window.innerHeight - button.offsetHeight;
+
+            button.style.left = Math.random() * maxX + "px";
+            button.style.top = Math.random() * maxY + "px";
+        });
+    </script>
+
+</body>
+</html>
